@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
+
     root: {
         margin: theme.spacing(3),
         width: 345,
@@ -17,6 +18,8 @@ const useStyles = makeStyles(theme => ({
 const MainStage = () => {
 
     const classes = useStyles();
+
+    const [data, setData] = useState();
 
     return (
         <div className={classes.root}>

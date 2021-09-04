@@ -12,7 +12,7 @@ describe("Api Service", () => {
 
         const serverResponse = {title: "camden show", description: "Show from last fall", url: "www.url.com"}
 
-        mockAxios.post.mockResolvedValue(serverResponse);
+        mockAxios.post.mockResolvedValue(Promise.resolve(serverResponse));
 
         const actual = postVideoRequest("Phish");
 

@@ -1,29 +1,31 @@
-import React, {useState} from "react";
-import {makeStyles} from '@material-ui/styles'
-
-const useStyles = makeStyles(theme => ({
-
-    root: {
-        margin: theme.spacing(3),
-        width: 345,
-    },
-    media: {
-        height: 140,
-    },
-    title: {
-        color: theme.palette.primary.main
-    }
-}));
+import React, {useEffect, useState} from "react";
+import {postVideoRequest} from "../service/ApiService";
+import VideoGrid from "./VideoGrid";
 
 const MainStage = () => {
 
-    const classes = useStyles();
-
     const [data, setData] = useState();
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        const getVideos = async () => {
+            setIsLoading(true)
+            const response = await postVideoRequest("The Disco Biscuits");
+            if (!response.error) {
+                setIsLoading(false)
+                setData(response.data)
+            }
+        }
+        getVideos();
+    }, [])
 
     return (
-        <div className={classes.root}>
+        <div>
             <h2>Main Stage</h2>
+            {!isLoading
+                ? <VideoGrid data={data}/>
+                : <></>
+            }
         </div>
     )
 }

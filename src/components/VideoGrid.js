@@ -1,10 +1,33 @@
 import React from "react";
+import "../VideoGrid.scss"
+import ReactPlayer from "react-player"
 
 const VideoGrid = ({data}) => {
 
+    const fetchVideos = (newData) => {
+        if (newData) {
+            return newData.map(vid => {
+                return (
+                    <div>
+                        <ul>
+                            <li>
+                                <h4>{vid.title}</h4>
+                                <ReactPlayer
+                                    url={vid.url}
+                                    width='100%'
+                                    height='100%'
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                )
+            });
+        }
+    };
+
     return (
         <div>
-            <h1>Grid will go here</h1>
+            {data ? fetchVideos(data) : <></>}
         </div>
     )
 };

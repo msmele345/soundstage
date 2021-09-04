@@ -52,13 +52,6 @@ h3 {
     padding-left: 10px;
 }
 
-.create_post {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-}
 
 body {
     background: #0e101c;
@@ -153,34 +146,3 @@ input[type="submit"],
     color: #0EABA0;
     /*margin-left: 525px;*/
 }
-
-.counter {
-    font-weight: 400;
-    background: white;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 4px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999999;
-    border: 1px solid rgb(79, 98, 148);
-    box-shadow: 0 0 4px rgb(79, 98, 148);
-}
-
-.blink-bg{
-    color: #fff;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-    margin-right: 25px;
-    animation: blinkingBackground 2s infinite;
-}
-@keyframes blinkingBackground{
-    0%		{ background-color: #10c018;}
-    25%		{ background-color: #1056c0;}
-    50%		{ background-color: #ef0a1a;}
-    75%		{ background-color: #0EABA0;}
-    100%	        { background-color: #04a1d5;}
-}
-/*color: #0EABA0*/

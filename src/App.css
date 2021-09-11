@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+
+.stageName {
+    text-align: left;
+}
+
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-    background-color: #282c34;
+    /*background-color: #282c34;*/
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -61,6 +66,7 @@ body {
     color: white;
     padding: 0 20px 100px;
 }
+
 
 .h1 {
     margin-top: 80px;
@@ -126,14 +132,21 @@ input[type="submit"],
     width: 100%;
 }
 
+.bandForm {
+    max-width: 400px;
+    margin-left: 625px;
+    padding-bottom: 20px;
+}
+
 .header {
     max-height: 20px;
-    padding-top: 10px
+    padding-top: 10px;
 }
 
 .container {
     display: grid;
     gap: 5rem;
+    background: #0e101c;
     max-height: fit-content;
     grid-template-columns: 1fr 1fr;
     /*justify-content: center;*/
@@ -141,6 +154,9 @@ input[type="submit"],
     /*width: 100%;*/
 }
 
+#root {
+    background: #0e101c;
+}
 
 .banner {
     color: #0EABA0;

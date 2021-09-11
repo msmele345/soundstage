@@ -1,6 +1,6 @@
 import React from "react";
-import "../VideoGrid.scss"
 import ReactPlayer from "react-player"
+import VideoList from "./VideoList";
 
 const VideoGrid = ({data}) => {
 
@@ -27,7 +27,10 @@ const VideoGrid = ({data}) => {
 
     return (
         <div>
-            {data ? fetchVideos(data) : <></>}
+            {data
+                ? <VideoList videos={data}/>
+                : <></>
+            }
         </div>
     )
 };

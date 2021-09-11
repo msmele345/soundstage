@@ -1,23 +1,18 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import {GridList, GridListTile} from '@material-ui/core'
+
 
 const VideoList = ({videos = []}) => {
     return (
         <div>
-            {videos.map((v, i) => (
-                <React.Fragment key={'video-' + i}>
-                    <ul>
-                        <li>
-                            <h4>{v.title}</h4>
-                            <ReactPlayer
-                                url={v.url}
-                                width='100%'
-                                height='100%'/>
-                        </li>
-                    </ul>
-                    <hr/>
-                </React.Fragment>
-            ))}
+            <GridList cellHeight={400} cols={2} style={{ width: 1600, height: 600 }}>
+                {videos.map((data, i) => (
+                    <GridListTile key={'video-' + i}>
+                        <ReactPlayer url={data.url}/>
+                    </GridListTile>
+                ))}
+            </GridList>
         </div>
     )
 };

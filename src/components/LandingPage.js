@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Header from "./Header";
 import MainStage from "./MainStage";
 
 export const NoMatch = ({location}) => <h3>No match for <code>{location.pathname}</code></h3>

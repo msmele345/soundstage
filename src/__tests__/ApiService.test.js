@@ -14,7 +14,7 @@ describe("Api Service", () => {
 
         mockAxios.post.mockResolvedValue(Promise.resolve(serverResponse));
 
-        const actual = postVideoRequest("Phish");
+        postVideoRequest("Phish");
 
         expect(mockAxios.post).toHaveBeenCalledWith(`http://localhost:8080/api/v1/videos`, request)
     });

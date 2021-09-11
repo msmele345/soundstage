@@ -1,31 +1,49 @@
 import React, {useEffect, useState} from "react";
 import {postVideoRequest} from "../service/ApiService";
 import VideoGrid from "./VideoGrid";
+import {useForm} from "react-hook-form";
+import {Loader} from "semantic-ui-react";
 
 const MainStage = () => {
 
     const [data, setData] = useState();
-    const [isLoading, setIsLoading] = useState(false)
+    const {register, errors, handleSubmit} = useForm();
+    const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const getVideos = async () => {
-            setIsLoading(true)
-            const response = await postVideoRequest("The Disco Biscuits");
-            if (!response.error) {
-                setIsLoading(false)
-                setData(response.data)
-            }
+    const onSubmit = async (data) => {
+        console.log("FORM DATA", data)
+        const {queryTerm} = data;
+
+        setIsLoading(true)
+        const response = await postVideoRequest(queryTerm);
+
+        if (!response.error) {
+            setIsLoading(false)
+            setData(response.data)
         }
-        getVideos();
-    }, [])
+    }
+
+    const renderLoader = () => (
+        <Loader
+            data-testid="loading"
+            type="Puff"
+            color="#00BFFF"
+            height={300}
+            width={100}
+            timeout={3000}
+        />)
 
     return (
         <div>
-            <h2>Main Stage</h2>
-            {!isLoading
-                ? <VideoGrid data={data}/>
-                : <></>
-            }
+            <h2 className={"stageName"}>Main Stage</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className={"bandForm"}>
+                <section>
+                    <label htmlFor="band-search">Band Name:</label>
+                    <input aria-label="band-name" {...register("queryTerm")} />
+                </section>
+                <input  aria-label="submit" type="submit" value="Get Shows"/>
+            </form>
+            {!isLoading ? <VideoGrid data={data}/> : renderLoader()}
         </div>
     )
 }
